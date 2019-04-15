@@ -18,14 +18,20 @@ const HDWalletProvider = require('truffle-hdwallet-provider')
  */
 const mnemonic = require('./mnemonic')
 
-// When running CI, we connect to the 'ganache' container
-const testHost = process.env.CI ? 'ganache' : '127.0.0.1'
-
 const mainnetProvider = function() {
   return new HDWalletProvider(
     mnemonic.seed,
     process.env.MAIN_NET_NODE,
-    mnemonic.accountIndex
+    mnemonic.addressIndex
+  )
+}
+
+const ganacheProvider = function() {
+  return new HDWalletProvider(
+    mnemonic.seed,
+    'http://127.0.0.1:8545',
+    mnemonic.addressIndex,
+    mnemonic.numAddresses
   )
 }
 
@@ -33,8 +39,7 @@ module.exports = {
   networks: {
     development: {
       // used for local dev
-      host: testHost,
-      port: 8545,
+      provider: ganacheProvider,
       network_id: '*', // Match any network id
     },
     rinkeby: {

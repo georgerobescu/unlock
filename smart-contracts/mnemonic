@@ -1,4 +1,5 @@
 module.exports = {
-  seed: "",
-  accountIndex: 0
+  seed: "save pepper brick sand market broken client genius earn olympic bean already",
+  addressIndex: 0,
+  numAddresses: 10
 }
