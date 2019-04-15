@@ -13,7 +13,7 @@ const HDWalletProvider = require('truffle-hdwallet-provider')
 // const rinkebyProviderUrl = `https://${rinkebyHostUsername}:${rinkebyHostPassword}@${rinkebyHost}/`
 
 /**
- * Used for main net deployments
+ * Used for main net deployments and truffle tests
  * TODO: consider using the same mechanism for Rinkeby
  */
 const mnemonic = require('./mnemonic')
@@ -31,7 +31,8 @@ const ganacheProvider = function() {
     mnemonic.seed,
     'http://127.0.0.1:8545',
     mnemonic.addressIndex,
-    mnemonic.numAddresses
+    mnemonic.numAddresses,
+    false // shareNonce
   )
 }
 
