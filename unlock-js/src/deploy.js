@@ -17,7 +17,7 @@ export default async function deploy(
     })
     .send({
       from: accounts[0],
-      gas: 4000000,
+      gas: 5000000,
     })
   onNewContractInstance(newContractInstance)
 
